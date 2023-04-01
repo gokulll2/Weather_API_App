@@ -58,7 +58,7 @@ function getfromSessionStorage() {
         fetchUserWeatherInfo(cordinates);
     }
 }
-function fetchUserWeatherInfo(coordinates) {
+async function  fetchUserWeatherInfo(coordinates) {
     const{lat,lon} = coordinates;
     //make grantContainer invisible
     grantAccessButton.classList.remove("active");
@@ -68,7 +68,7 @@ function fetchUserWeatherInfo(coordinates) {
     //API CALL
     try{
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`);
-        const data= await response.json();
+        const data = await response.json();
 
         loadingScreen.classList.remove("active");
         userInfoContainer.classList.add("active");
@@ -81,5 +81,23 @@ function fetchUserWeatherInfo(coordinates) {
     }
 }
 
-function renderWeatherInfo(wearher)
+function renderWeatherInfo(weatherInfo){
+    //firstly ,  we have to fetch the elements
+
+    const cityName = document.querySelector("[data-cityName]");
+    const countryIcon = document.querySelector("[data-countryIcon]");
+    const desc = document.querySelector("[data-weatherDesc]");
+    const weatherIcon = document.querySelector("[data-weatherIcon]");
+    const temp = document.querySelector("[data-temp]");
+    const windspeed = document.querySelector("[data-windspeed]");
+    const humidity = document.querySelector("[data-humidity]");
+    const clouds = document.querySelector("[data-cloudiness]");
+
+    console.log(weatherInfo);
+
+    //fetch values from weatherInfo object and put it UI elements
+
+    cityName.innerText = weatherInfo?.name;
+
+}
 

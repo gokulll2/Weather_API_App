@@ -1,7 +1,7 @@
 const userTab = document.querySelector("[data-userWeather]");
 const searchTab=document.querySelector("[data-searchWeather]");
-const userContainer=document.getElementsByClassName("weather-container");
-const grantAccessContainer=document.getElementsByClassName("grant-location-container");
+const userContainer=document.querySelector(".weather-container");
+const grantAccessContainer=document.querySelector(".grant-location-container");
 const searchForm = document.querySelector("[data-searchForm]");
 const loadingScreen = document.querySelector(".loading-conatiner");
 const userInfoContainer = document.querySelector(".user-info-container");
@@ -41,6 +41,7 @@ userTab.addEventListener("click", () => {
     switchTab(userTab);
 });
 searchTab.addEventListener("click", () => {
+    console.log("ram")
      //pass clicked tab as input parameter
      switchTab(searchTab);
 });
